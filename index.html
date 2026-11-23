@@ -1,0 +1,669 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ENGW 104 Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: a quiet index hub (one solid essay block as the anchor) leading to long-read pages.
+   Palette: lichen and pond greens, from the poem's setting; type: a display serif for names,
+   a text serif for reading, a plain sans for labels. */
+:root {
+  --bg: #f3f6f2;
+  --surface: #e8eee7;
+  --fg: #17201b;
+  --muted: #55625a;
+  --rule: #c9d3c8;
+  --accent: #35603f;
+  --accent-ink: #f3f6f2;
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1512;
+    --surface: #17211c;
+    --fg: #e5ece6;
+    --muted: #9aa99f;
+    --rule: #2b3a31;
+    --accent: #8fc09f;
+    --accent-ink: #0e1512;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e1512;
+  --surface: #17211c;
+  --fg: #e5ece6;
+  --muted: #9aa99f;
+  --rule: #2b3a31;
+  --accent: #8fc09f;
+  --accent-ink: #0e1512;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.6;
+  margin: 0;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: inherit; }
+a:focus-visible, h1:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1:focus { outline: none; }
+.view { max-width: 62rem; margin-inline: auto; padding-block: 2.5rem 3.5rem; }
+
+/* shared labels */
+.eyebrow, .clabel, .blabel, .asub, .lead, .count, .pos, .back, .date, .pn span, .foot {
+  font-family: var(--font-ui);
+}
+.eyebrow {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin: 0 0 0.9rem;
+}
+
+/* hub */
+.hero h1 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(3rem, 10vw, 6rem); line-height: 0.98; margin: 0;
+  text-wrap: balance; letter-spacing: -0.01em;
+}
+.byline { font-family: var(--font-display); font-style: italic; font-size: 1.7rem; margin: 0.6rem 0 1.4rem; color: var(--muted); }
+.lede { max-width: 38rem; font-size: 1.15rem; margin: 0 0 2rem; }
+
+.path { list-style: none; padding: 0; margin: 0 0 2.75rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.path li { border-top: 2px solid var(--rule); }
+.path li:last-child { border-top-color: var(--accent); }
+.path a { display: block; text-decoration: none; padding: 0.7rem 0 0; }
+.path b { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+.path span { display: block; font-family: var(--font-ui); font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+.path a:hover b { text-decoration: underline; text-underline-offset: 4px; }
+
+.hubmain { display: grid; gap: 2.5rem; }
+.start { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.card {
+  display: grid; gap: 0.35rem; text-decoration: none; padding: 1.1rem 1.25rem;
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 2px;
+  transition: border-color 0.15s;
+}
+.card:hover { border-color: var(--accent); }
+.clabel { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); }
+.ctitle { font-family: var(--font-display); font-size: 1.7rem; line-height: 1.1; }
+.cdesc { font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted); }
+
+.feature {
+  display: grid; gap: 0.5rem; text-decoration: none; padding: 2rem 2rem 1.8rem;
+  background: var(--accent); color: var(--accent-ink); border-radius: 2px;
+}
+.feature .clabel { color: var(--accent-ink); opacity: 0.85; }
+.ftitle { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 3.6rem); line-height: 1.02; text-wrap: balance; }
+.fsub { font-family: var(--font-display); font-style: italic; font-size: 1.4rem; opacity: 0.9; }
+.fdesc { max-width: 34rem; margin-top: 0.4rem; }
+.fgo { font-family: var(--font-ui); font-weight: 500; margin-top: 0.8rem; text-decoration: underline; text-underline-offset: 4px; }
+
+.hubmain h2 {
+  font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1.1;
+  margin: 0 0 0.6rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.9rem;
+}
+.count { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+.rows { list-style: none; padding: 0; margin: 0; border-bottom: 1px solid var(--rule); }
+.rows li { border-top: 1px solid var(--rule); }
+.row {
+  display: grid; grid-template-columns: 4.5rem minmax(12rem, 16rem) 1fr auto; gap: 0.2rem 1rem;
+  align-items: baseline; padding: 0.95rem 0; text-decoration: none;
+}
+.lead { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rt { font-weight: 600; font-size: 1.08rem; }
+.rd { font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted); min-width: 0; }
+.go { color: var(--accent); transition: transform 0.15s; }
+.row:hover .rt { text-decoration: underline; text-underline-offset: 4px; }
+.row:hover .go { transform: translateX(4px); }
+.foot { margin-top: 3.5rem; font-size: 0.8rem; color: var(--muted); }
+
+/* piece pages */
+.topbar { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.85rem; margin-bottom: 2.5rem; }
+.back { text-decoration: none; color: var(--accent); font-weight: 500; }
+.back:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pos { color: var(--muted); font-variant-numeric: tabular-nums; }
+.piece { max-width: 42rem; margin-inline: auto; }
+.piece h1 {
+  font-family: var(--font-display); font-weight: 400; font-size: clamp(2.1rem, 6vw, 3.3rem);
+  line-height: 1.06; margin: 0 0 0.4rem; text-wrap: balance;
+}
+.subtitle { font-family: var(--font-display); font-style: italic; font-size: 1.45rem; color: var(--muted); margin: 0 0 0.6rem; }
+.date { font-size: 0.85rem; color: var(--muted); margin: 0.3rem 0 0; }
+.blurb { background: var(--surface); border: 1px solid var(--rule); border-radius: 2px; padding: 1.1rem 1.3rem 0.4rem; margin: 1.8rem 0 0; }
+.blabel { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin: 0 0 0.5rem; }
+.blurb p:not(.blabel) { font-size: 1.02rem; line-height: 1.68; margin: 0 0 0.9rem; }
+.asub { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 1.1rem; margin: 2.2rem 0 1.6rem; }
+.piece > .text:first-of-type { margin-top: 1.8rem; }
+
+.text { font-size: 1.12rem; line-height: 1.75; overflow-wrap: break-word; }
+.text p { margin: 0 0 1.15em; }
+.text h2 { font-family: var(--font-display); font-weight: 400; font-size: 1.9rem; line-height: 1.15; margin: 2.4em 0 0.7em; text-wrap: balance; }
+.text h3 {
+  font-family: var(--font-ui); font-size: 0.78rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--accent); margin: 2.4em 0 0.8em;
+}
+.text h3:first-child, .text h2:first-child { margin-top: 0; }
+.text em { font-style: italic; }
+.text .prompt { font-weight: 600; margin-top: 1.7em; }
+.text .cite { font-weight: 600; font-size: 1.02rem; margin: 1.9em 0 0.5em; }
+.text ul { padding: 0; margin: 0 0 1.2em; list-style: none; }
+.text .ann li { margin-bottom: 0.55em; }
+.lbl { font-family: var(--font-ui); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); font-weight: 600; margin-right: 0.55em; }
+.text .qa li { margin-bottom: 0.9em; }
+.text .lst { list-style: disc; padding-left: 1.4rem; }
+.text .lst li { margin-bottom: 1.1em; }
+.text .lst li p { margin-bottom: 0.9em; }
+.o { margin: 0 0 0.55em; line-height: 1.6; }
+.o1 { margin-top: 1.5em; font-weight: 600; }
+.o2 { margin-left: 1.6rem; }
+.o3 { margin-left: 3.2rem; color: var(--muted); font-size: 1rem; }
+
+.essay .wc { margin-top: 3em; }
+.essay .cite { font-weight: 400; font-size: 1rem; line-height: 1.6; margin: 0 0 0.9em; padding-left: 2rem; text-indent: -2rem; }
+
+.poem { margin: 2rem 0 2rem 1rem; font-size: 1.1rem; line-height: 1.6; }
+.stanza { margin-bottom: 1.3em; }
+.ln { display: block; }
+
+.pn { display: flex; justify-content: space-between; gap: 1.5rem; max-width: 42rem; margin: 3.5rem auto 0; padding-top: 1.3rem; border-top: 1px solid var(--rule); }
+.pn a { display: block; text-decoration: none; font-family: var(--font-display); font-size: 1.35rem; line-height: 1.15; max-width: 48%; }
+.pn a span { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); margin-bottom: 0.3rem; }
+.pn a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.pn .next { text-align: right; margin-left: auto; }
+
+@media (max-width: 720px) {
+  body { font-size: 17px; }
+  .view { padding-block: 1.6rem 2.5rem; }
+  .path { grid-template-columns: 1fr; gap: 0.6rem; }
+  .start { grid-template-columns: 1fr; }
+  .feature { padding: 1.5rem 1.25rem; }
+  .row { grid-template-columns: 3.4rem 1fr auto; }
+  .rt { grid-column: 2; }
+  .rd { grid-column: 2; grid-row: 2; }
+  .go { grid-column: 3; grid-row: 1; }
+  .o2 { margin-left: 1rem; }
+  .o3 { margin-left: 2rem; }
+  .poem { margin-left: 0.4rem; }
+  .pn a { font-size: 1.15rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .go, .card { transition: none; }
+  .row:hover .go { transform: none; }
+}
+
+</style>
+
+<section class="view" id="view-hub" aria-labelledby="h-hub">
+  <header class="hero">
+    <p class="eyebrow">ENGW 104 &middot; Fall 2026 &middot; Instructor: Cyrus Hampton</p>
+    <h1 id="h-hub" tabindex="-1">ENGW 104 Portfolio</h1>
+    <p class="byline">Yogesh Dhamala</p>
+    <p class="lede">A semester of writing that follows one project, from a first topic about death to a finished essay on personal identity. Start with the two short pieces below, or go straight to the essay.</p>
+    <ol class="path" aria-label="How the topic changed">
+      <li><a href="#potential-topic-list"><b>Death</b><span>Potential Topic List</span></a></li>
+      <li><a href="#topic-explanation"><b>The soul</b><span>Topic Explanation</span></a></li>
+      <li><a href="#annotated-bibliography"><b>Personal identity</b><span>Annotated Bibliography onward</span></a></li>
+    </ol>
+  </header>
+  <main class="hubmain">
+    <section class="start" aria-label="Start here">
+      <a class="card" href="#about"><span class="clabel">Start here</span><span class="ctitle">About the Author</span><span class="cdesc">Who I am in relation to this writing.</span></a>
+      <a class="card" href="#statement"><span class="clabel">Start here</span><span class="ctitle">Portfolio Statement</span><span class="cdesc">What ties these pieces together.</span></a>
+    </section>
+    <a class="feature" href="#core-essay">
+      <span class="clabel">Core Essay</span>
+      <span class="ftitle">So, Who Am I, Really?</span>
+      <span class="fsub">An Essay On Personal Identity</span>
+      <span class="fdesc">Locke, Parfit, a chatbot of a dead man, and two characters from fiction, used to ask what makes you the same person.</span>
+      <span class="fgo">Read the essay &rarr;</span>
+    </a>
+    <section aria-labelledby="h-prep">
+      <h2 id="h-prep">Essay preparation <span class="count">6 pieces, in the order I did them</span></h2>
+      <ol class="rows"><li><a class="row" href="#potential-topic-list"><span class="lead">1</span><span class="rt">Potential Topic List</span><span class="rd">Three possible topics: death, Spider-Man, and love.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#topic-explanation"><span class="lead">2</span><span class="rt">Topic Explanation</span><span class="rd">Death and the soul, and why I chose it.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#annotated-bibliography"><span class="lead">3</span><span class="rt">Annotated Bibliography</span><span class="rd">Ten sources, and the moment the topic became personal identity.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#central-question"><span class="lead">4</span><span class="rt">Central Question</span><span class="rd">What I'd ask about personal identity, and where my research left me.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#audience-goals-style"><span class="lead">5</span><span class="rt">Audience, Goals, and Style</span><span class="rd">Who I'm writing for and the voice I wanted.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#outline"><span class="lead">6</span><span class="rt">Outline</span><span class="rd">The plan for the essay, step by step.</span><span class="go" aria-hidden="true">&rarr;</span></a></li></ol>
+    </section>
+    <section aria-labelledby="h-journal">
+      <h2 id="h-journal">Journal entries <span class="count">4 entries</span></h2>
+      <ol class="rows"><li><a class="row" href="#journal-1"><span class="lead">20 Aug</span><span class="rt">Journal Entry 1</span><span class="rd">How I feel about writing, and a poem with no fixed structure.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#journal-2"><span class="lead">11 Sep</span><span class="rt">Journal Entry 2</span><span class="rd">Finishing Phaedo, and being nervous about my first long essay.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#journal-3"><span class="lead">18 Oct</span><span class="rt">Journal Entry 3</span><span class="rd">Settling on personal identity and expecting the writing to go well.</span><span class="go" aria-hidden="true">&rarr;</span></a></li><li><a class="row" href="#journal-4"><span class="lead">9 Nov</span><span class="rt">Journal Entry 4</span><span class="rd">Reflecting on the process, plus the poem I cut.</span><span class="go" aria-hidden="true">&rarr;</span></a></li></ol>
+    </section>
+    <section aria-labelledby="h-bonus">
+      <h2 id="h-bonus">Bonus <span class="count">optional</span></h2>
+      <ol class="rows"><li><a class="row" href="#bonus"><span class="lead">Poem</span><span class="rt">Bonus Piece: I Had a Child Inside Me</span><span class="rd">The garden poem I cut from the essay.</span><span class="go" aria-hidden="true">&rarr;</span></a></li></ol>
+    </section>
+  </main>
+  <footer class="foot">Yogesh Dhamala &middot; ENGW 104 &middot; Fall 2026 &middot; Instructor: Cyrus Hampton</footer>
+</section>
+
+<section class="view" id="view-about" hidden aria-labelledby="h-about">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">1 of 14</span></div>
+<article class="piece">
+<h1 id="h-about" tabindex="-1">About the Author</h1>
+<div class="text">
+<p>I'm Yogesh Dhamala, a freshman at Howard. I'm planning to double major in math and physics, with a minor in philosophy if my credits allow it. I also want to go into academia, and I want to keep exploring philosophy alongside it.</p>
+<p>Outside class I write poetry and read. I only recently got into reading books. Before that it was mostly web novels, and one of them ended up in my essay.</p>
+<p>This class is the first writing course I've taken where the writing itself is the point. I walked in disliking rigid structure, and I ended up writing 3,000 words about who I am.</p>
+</div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<span></span>
+<a class="next" href="#statement"><span>Next</span>Portfolio Statement</a>
+</nav></section><section class="view" id="view-statement" hidden aria-labelledby="h-statement">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">2 of 14</span></div>
+<article class="piece">
+<h1 id="h-statement" tabindex="-1">Portfolio Statement</h1>
+<div class="text">
+<p>Everything here comes from one writing course, ENGW 104, but it's really the story of one question changing. I started out wanting to write about death and whether we have a soul. The more I read, the more that turned into a different question: what makes you the same person you were yesterday, or a year ago? Every piece shows a step in that change, from the journal entries where I checked in on how the work was going, to the planning assignments, to the final essay.</p>
+<p>I want you to think about your own answer while you read. I don't land on a clean one, cause I don't have one. What the pieces show is each theory I looked at breaking in the same kind of place, and that something is still there even when a character has too much memory or almost none.</p>
+<p>Read together, I see someone who thinks by asking questions out loud and got more comfortable with not knowing. I also see my writing loosening up. Some of the earlier pieces are more formal, and the essay sounds more like me, with a poem at the end that I left for you to read your own way. I started this class with questions about death. I'm finishing it with the same questions, asked about myself.</p>
+</div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#about"><span>Previous</span>About the Author</a>
+<a class="next" href="#core-essay"><span>Next</span>Core Essay</a>
+</nav></section><section class="view" id="view-core-essay" hidden aria-labelledby="h-core-essay">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">3 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Core Essay</p>
+<h1 id="h-core-essay" tabindex="-1">So, Who Am I, Really?</h1>
+<p class="subtitle">An Essay On Personal Identity</p>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is the main piece of the portfolio, my core essay. It asks what personal identity is and goes through Locke, Parfit, and Roache, the Ship of Theseus, and my own idea that identity works like an integral. It then tests all of that on a real chatbot built from a dead man's texts and on two characters from fiction, one with too much memory and one with almost none. It doesn't end with a clean answer. It ends with a poem I wrote, which I left unexplained on purpose.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text essay"><p>Am I the same person I was a year ago? Yesterday? An hour ago? I don’t know. I’m not even sure I’m the same person around my mom as I am around my friends, and that’s on the same afternoon. I’ve been reading people who are supposed to know this stuff, and they don’t agree with each other. A soul, memory, something else. Everybody’s got a different answer.</p>
+<p>This all started with death, actually. I wanted to write about death and whether we have a soul or not. I’ve lost my father and my grandmother, and I almost died myself once (appendicitis, and I didn’t even understand what was happening), so death never felt like some far away topic to me. But the more I read about the soul, the more I got stuck on a different question. If a soul does carry on after you die, what exactly is it carrying? Is that still me? And what even is “me” to begin with? That second question started pulling harder than the first one, so that’s what this essay ended up being about.</p>
+<p>I’m not gonna give one clean answer, cause I don’t have one. What I’m gonna do is go through what a few philosophers actually say, throw some hard cases at their ideas and see what holds up.</p>
+<h2>Locke’s Viewpoint</h2>
+<p>Locke is where I’ll start, cause he’s the one who really pulls these ideas apart. He says “man” and “person” are two different things. A man is just the animal. It’s the living body, and it counts as the same man from birth to death even though the stuff it’s made of keeps changing. A person is something else. Locke defines a person as “a thinking intelligent being, that has reason and reflection, and can consider itself as itself, the same thinking thing, in different times and places”. There’s no body in that definition. No soul either. A person is basically the thing that can look back at the past and say, yeah, that was me.</p>
+<p>He also calls “person” a forensic term. Basically it’s a courtroom word. It exists so we can decide who gets praised or blamed, rewarded or punished. And it only makes sense to punish you for something you actually know you did, something you can remember as yours. That’s why memory ends up at the center of his whole theory.</p>
+<p>Then he gives the prince and the cobbler. Say the prince’s soul, with all of his memories, gets put into the cobbler’s body, and the cobbler’s own soul is gone. Locke says the one walking around in the cobbler’s body is the prince. Not somebody who thinks he’s the prince. He is the prince. Everybody else would just see a cobbler. The body is still the same man it always was, so “same man” and “same person” come apart. Memory decides which one you follow.</p>
+<p>Then he flips it. What if a soul carries over but none of the memories do? Locke says that’s not the same person. Same soul, different person. So a soul by itself doesn’t get you anything. Even if souls exist, even if they last forever, that alone doesn’t tell you the person on the other side is you.</p>
+<p>That part surprised me, cause I came into this thinking the soul would be the answer. Locke basically says it isn’t. But I’ve got a problem with his answer too. He says I’m the same person as my past self if I remember being that self. But remembering something already means it happened to me. So it goes in a circle. I’m the same person as whoever I remember being, and “remember being” just means “was.” Roache points out the same thing, that defining personal identity through memory risks circularity. So I don’t think memory can be the whole answer either. It’s also kinda weird that a word built for courtrooms is the one we end up using to ask whether we survive death.</p>
+<p>There’s also a smaller, dumber version of this question that I was stuck on way before I found any of these guys. I change. Every day. I’m not the same around my mom as I am around my friends. So is my identity not really one thing, but a pile of slightly different me’s, one for every second I’ve been alive? That kinda scared me when I first thought it through.</p>
+<p>I’m not the first person to notice this. Heraclitus said it like 2,500 years ago, that you can’t step into the same river twice, cause the water’s moved on and so have you. Then there’s the Ship of Theseus. Replace every plank of a ship, one at a time, and at the end, is it still the same ship?</p>
+<p>The problem is that a ship has nothing going on inside it. There’s nothing about what it’s like to be a boat. So, all the ship really shows is that a structure can stay the same through change. It doesn’t tell me if there’s somebody home the whole time. And that’s the part I care about.</p>
+<p>Parfit gave me a better way to think about it. He splits it into two things. Psychological connectedness is a direct link between two points in your life, like remembering something. Psychological continuity is an overlapping chain of those links. Connectedness fades the further apart two moments are. Continuity doesn’t have to.</p>
+<p>Think of a rope. No single fiber runs the whole length, but the fibers overlap, so the rope holds. That’s how I see it. I can be continuous with the guy I was ten years ago and have almost no direct connection with him. I don’t remember most of what he did, or how it felt. That doesn’t mean he isn’t me. It just means a lot of time has passed.</p>
+<p>This next part is my own idea, so take it for what it is. If time is made of infinitely many tiny instants, then there’s infinitely many versions of me, one for every instant. That sounds like a problem. But calculus kind of has an answer for it. An integral adds up infinitely many super thin slices, each one worth almost nothing on its own, and still gives you one real, finite number. I think a personality works like that. And maybe in the way of life, we even leave behind some of our personal identities, which also adds or subtracts to our personal identity. So, no single moment is all of me. The sum of all of them is. So personal identity equals one. I know that’s an analogy and not a proof. But it fits what the rope already showed me. Identity isn’t any one point. It’s the whole stretch.</p>
+<p>There’s also a different kind of “many me’s” that has nothing to do with time. William James said a person has as many social selves as there are people who carry an image of him in their head. Erving Goffman took that and ran with it. He said people perform different versions of themselves depending on who’s watching, kind of like actors playing different roles on different stages.</p>
+<p>That’s basically me with my mom versus me with my friends. So the “who am I” question doesn’t only stretch across time. It stretches across every room I walk into.</p>
+<p>So far that’s all slow change, the kind that happens to everybody whether they notice or not. The harder version is when somebody gets copied on purpose. Yeah, it sounds like science fiction and it is but let’s just go with it for a minute.</p>
+<p>Parfit’s most famous example is a teleporter. A scanner on Earth records every cell in your body and destroys the original. A machine on Mars builds an exact copy from the data. Did you travel? Or did you die and get replaced by somebody who just thinks he’s you? Then he makes it worse. Say the scanner doesn’t destroy you right away. For a few days there are two of you, and only one is about to die. Both have the same claim to being you. Parfit’s conclusion is that strict identity isn’t what matters in survival. What matters is what he calls Relation R, which is basically psychological continuity (Parfit). And Relation R can go one-to-many, so there’s no clean answer to which one is really you.</p>
+<p>Okay, so Roache takes up a related question. Can one person even have a memory of something that happened to somebody else? She calls that a quasi-memory. Say you copy one memory from Paul to Jane. Roache’s example is a memory of overhearing a funny conversation in Italian. Paul speaks Italian. Jane doesn’t. Does Jane get Paul’s amusement? To find it funny, she’d need to know Italian too.</p>
+<p>So Roache splits it into two versions. In the narrow version, Jane only gets the sense impressions, what Paul saw and heard, and none of his feelings. In the broad version, she gets the feelings too. But then you run into Wollheim’s point, that memories are tied into a whole web of other stuff, like beliefs, emotions, and skills, so you can’t just lift one out cleanly. Either way, Roache says, copying memories piece by piece gives you something weaker than the original.</p>
+<p>Then she looks at a different kind of copying, wholesale. Instead of one memory, you transfer a person’s whole mind, memories, character, habits, all of it. That’s what happens in Parfit’s brain-splitting case, where each half of a brain goes into a different body. The two people who wake up didn’t exist before the operation, so they have no mental stuff of their own to clash with what they inherit. The problems from piecemeal copying don’t show up, and Roache says that rescues the idea of quasi-memory.</p>
+<p>Here’s where I get stuck, though. A person with no mental stuff of their own isn’t really a person waiting to receive something. They’re nothing yet. So, the one case that makes this work might not even make sense outside of a thought experiment. It only works because nobody’s home to argue with it.</p>
+<p>All of that sounded like thought experiments until I found out somebody actually tried a small version of it.</p>
+<p>In November 2015, a man named Roman Mazurenko was hit by a car in Moscow and died . His close friend Eugenia Kuyda ran a company that built chatbots. She collected his old text messages, more than 8,000 lines from ten of his friends and family, added hundreds of her own, and used them to build a bot that talked the way he did. Then she made it public, so anyone could chat with it. People reacted really differently though. A lot of people found it comforting. His friend Sergey Fayfer said the phrases the bot used were “really his”. But four of his friends were disturbed by it and wouldn’t touch it. And Kuyda herself struggled with whether she was doing the right thing, and the project sometimes even gave her nightmares.</p>
+<p><em>Black Mirror</em> has an episode, “Be Right Back,” that tells almost the same story. A woman named Martha loses her boyfriend Ash in a car accident. She signs up for a service that rebuilds him from his online history. At First it’s only messages. Then it’s his voice on the phone. And then it’s a physical android. Eventually she tests it, and it just goes along with whatever she says. It doesn’t push back and argue. It doesn’t act scared, which Ash would have. Once she told him to go die and he went and nearly did that, Which a real human would never have done. That’s how she knows it isn’t him.</p>
+<p>By Roache’s definitions, both of these are piecemeal cases. A bunch of texts, a bunch of recorded habits. That’s scraps from the outside, not the whole mind behind them. So even being as generous as possible, I don’t think either one is the same person, not by Locke’s standard and not by Parfit’s. Maybe that’s why the bot felt right to some people and wrong to others. It sounds like him. It just isn’t all of him. And that’s what makes this hit different from the thought experiments. Real people sat there messaging it, and they felt something real, whether that was comfort or the creeps.</p>
+<p>Two more places where I ran into this question were in things I was reading anyway, a web novel and a Russian novella, and they sit at opposite ends.</p>
+<p>In the web novel <em>A Regressor’s Tale of Cultivation</em>, Seo Eun-hyun regresses life after life and keeps all of his memories every time. Although there are many catches and condition in there but in general, he regresses every time he dies and retains all of his memories. At one time, there’s so much memory piled up that it stops working like normal memory. At that point he is not strong enough to digest. So, It turns into instinct and feeling. He can’t narrate it or think it through anymore and just moves on instinct.</p>
+<p>At the other end is Dostoevsky’s <em>White Nights</em>. The narrator is only ever called the dreamer. He’s lived alone in Petersburg for years and barely knows anyone. He talks to the houses he passes, and they answer him. When he meets a girl named Nastenka and she asks about him, he tells her he has no history. He even calls himself “a type”. Göncüoğlu reads him as a “superfluous man,” someone stuck in his own monologue with nobody to answer back.</p>
+<p>These were the two extremes. Seo Eun-hyun has way too much memory. It basically turns him into pure instinct. But he’s still him. There’s still somebody there, moving through all of it. The dreamer’s the opposite. He says he has no history. Nothing to remember, nobody who knows him. But he isn’t blank either. Being alone is his identity. He talks to the houses, talks to the air, and then talks to Nastenka, and you can hear exactly who he is when he does. His personality comes out in the way he talks to her.</p>
+<p>So one has way too much memory and the other says he has none, and both still have a personal identity. If memory is what makes you YOU, that shouldn’t happen. Something’s still there when the memory part is overloaded or basically missing. So what is that?</p>
+<p>And that takes me here. The philosophers gave me three main answers. A soul, which is the old one. Memory, which is Locke. Psychological continuity, which is Parfit. And every one of them breaks in the same spot, when somebody gets copied, or stretched, or pushed to an extreme.</p>
+<p>I don’t think that means any of them are just wrong. I think “personal identity” is being asked to do too many jobs at once. Locke needs it to decide who gets blamed and who doesn’t, cause it wouldn’t be fair to punish somebody for something a different person did. Parfit needs it to figure out what’s worth caring about in the future, like whether I should be scared of the teleporter or not. Roman’s friends needed it to decide whether a chatbot version of him counted as him at all. One answer was never and will never cover all of that.</p>
+<p>And the two novels showed me something else. Even with way too much memory or basically none, there’s still somebody there. So memory can’t be the whole answer. I don’t think a soul is either, cause I still can’t say what it would even add. What I’m left with is personal identity itself, whatever that is. I can’t define it. But I can tell it’s there when I look at those two characters.</p>
+<p>It also brings me back to where this started. I wanted to know if a soul survives death, but that question sits on top of this one. If a soul carried all my memories somewhere, Locke says that’s me. If it carried none of them, he says it isn’t, even if it’s the same soul. So whether “I” survive death depends on what “I” even means. The two novels make me think what’s left over isn’t memory, and I don’t think it’s a soul either, but it’s something.</p>
+<p>So back to the start. Am I the same person I was a year ago? An hour ago? Around my mom versus my friends? I still don’t have a clean answer. What I have now is a better idea of why nobody does. Whatever technology shows up that can scan us or rebuild us, I don’t think it closes the question. It just moves the same question onto new stuff. I guess I’ll keep asking it. <br>I want to end with a poem I wrote that addresses what I think Personal Identity is:</p>
+<div class="poem"><div class="stanza"><span class="ln">What am I doing in this place?</span><span class="ln">On a hollow chair I sit,</span><span class="ln">Ringed by white figures</span><span class="ln">Seated, just like me,</span><span class="ln">While someone watches over us.</span></div><div class="stanza"><span class="ln">A figure as white as me</span><span class="ln">Circles slowly, as if watching us.</span><span class="ln">Is it protecting us? Keeping watch over us?</span><span class="ln">I ponder...</span></div><div class="stanza"><span class="ln">In the pond nearby</span><span class="ln">Lie more chairs, drowning.</span><span class="ln">Were they competitors, or... I wonder?</span></div><div class="stanza"><span class="ln">What am I doing in this place?</span><span class="ln">Surrounded by grass and water,</span><span class="ln">On a bed of lichen I sit,</span><span class="ln">Wondering if this is where I fit.</span></div><div class="stanza"><span class="ln">Am I a god, a slave or a winner,</span><span class="ln">Or trapped in hell, a sinner?</span><span class="ln">A bright place this is,</span><span class="ln">But I wonder</span><span class="ln">If it is a reflection of hellfire</span><span class="ln">Or my sun.</span></div></div>
+<h2 class="wc">Works Cited</h2>
+<p class="cite">“Be Right Back.” <em>Black Mirror</em>, season 2, episode 1, written by Charlie Brooker, directed by Owen Harris, Channel 4, 11 Feb. 2013.</p>
+<p class="cite">Dostoevsky, Fyodor. <em>White Nights</em>. Translated by Constance Garnett, onemorelibrary.com.</p>
+<p class="cite">Goffman, Erving. <em>The Presentation of Self in Everyday Life</em>. Doubleday, 1959.</p>
+<p class="cite">Göncüoğlu, M. Önder. “Lonely Dreamers in Dostoevsky’s <em>White Nights</em> and Sabahattin Ali’s <em>Madonna in a Fur Coat</em>: A Comparative Analysis.” <em>Ankara Üniversitesi Dil ve Tarih-Coğrafya Fakültesi Dergisi</em>, vol. 57, no. 1, 2017, pp. 202-25.</p>
+<p class="cite">James, William. <em>The Principles of Psychology</em>. Henry Holt and Company, 1890.</p>
+<p class="cite">Locke, John. “Of Identity and Diversity.” <em>An Essay Concerning Human Understanding</em>, book 2, chapter 27, Wikisource, en.wikisource.org/wiki/An_Essay_Concerning_Human_Understanding_(Troutman_%26_Hayes_1853)/Book_2/Chapter_27.</p>
+<p class="cite">Newton, Casey. “Speak, Memory.” <em>The Verge</em>, 6 Oct. 2016, www.theverge.com/a/luka-artificial-intelligence-memorial-roman-mazurenko-bot.</p>
+<p class="cite">Parfit, Derek. <em>Reasons and Persons</em>. Oxford University Press, 1984.</p>
+<p class="cite"><em>A Regressor’s Tale of Cultivation</em>, wetriedtls.com/series/a-regressors-tale-of-cultivation.</p>
+<p class="cite">Roache, Rebecca. “A Defence of Quasi-Memory.” <em>Philosophy</em>, vol. 81, no. 2, 2006, pp. 323-55.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#statement"><span>Previous</span>Portfolio Statement</a>
+<a class="next" href="#potential-topic-list"><span>Next</span>Potential Topic List</a>
+</nav></section><section class="view" id="view-potential-topic-list" hidden aria-labelledby="h-potential-topic-list">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">4 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Essay preparation · 1 of 6</p>
+<h1 id="h-potential-topic-list" tabindex="-1">Potential Topic List</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This was the first step, where I listed three topics I could write about: death, Spider-Man, and love. Love, because it's the emotion people go to war over (think of the Odyssey and the myths about Olympus). Spider-Man, because everyone can relate to him. And death, which I picked, and which later turned into personal identity.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><h3>Death</h3>
+<ul class="qa">
+<li><strong>Overview of topic:</strong> Death is a very ambiguous term, and my essay will discuss what happens after death. Or even what death is. This may cover the process of dying, what happens after it and the infinite possibilities it holds.</li>
+<li><strong>Your interests in topic:</strong> I am interested in this topic from a philosophical perspective as an atheist. I believe this could be one of the ways I could discover if god exists or not.</li>
+<li><strong>What you hope to answer by exploring topic: </strong>What I hope to explore from this topic is the concept of Death. Cause it is such a dangerous and mysterious concept to think of. And by exploring this topic, I hope to come to some conclusions, even if it is not a single one.</li>
+<li><strong>What you find challenging about topic:</strong> The term death itself is challenging, and for this I will have to study a lot, maybe Plato’s Phaedo, and mainly complete a course about death from Yale. Also, the topic itself requires a lot of thinking, so that is going to be challenging too.</li>
+<li><strong>How familiar you are with topic:</strong> I would say I am pretty familiar cause I have been taking the course regarding death and have started understanding something regarding it.</li>
+</ul>
+<h3>Spiderman</h3>
+<ul class="qa">
+<li><strong>Overview of topic: </strong>Spiderman is the most popular superhero in the world. Through this topic I want to explore why he is considered the best hero. Just who do people like him so much? Is it just because of his powers, or is it because of his life?</li>
+<li><strong>Your interests in topic: </strong>My interest in exploring this topic is just how much people relate to Spider-Man. I want to explore how people relate to him behind the mask and in the mask.</li>
+<li><strong>What you hope to answer by exploring topic: </strong>What I hope to answer through this topic is the reason behind Spider-Man’s popularity and his relatability. This may answer the question as to why Spider-Man is a bigger source of entertainment than other superheroes.</li>
+<li><strong>What you find challenging about topic: </strong>The challenging part would be the research part as I might have to read may comics or reddit posts (yeah ik). But I think it would be very fun.</li>
+<li><strong>How familiar you are with topic: </strong>I am very familiar with the topic as Spider-Man is also my favourite superhero and I think that tells you a lot.</li>
+</ul>
+<h3>Love</h3>
+<ul class="qa">
+<li><strong>Overview of topic; </strong>Love is an unmeasurable feeling and there are different forms and types to express it. Through this topic I want to explore the concept of love and how people express it differently.</li>
+<li><strong>Your interests in topic: </strong>My interest in this topic arose after my breakup because I wanted to explore js what is love and what happens when you are in love? I know my experience but I would like to know of others and also read some poems related to love and make my essay based on that.</li>
+<li><strong>What you hope to answer by exploring topic: </strong>I hope to get somewhat of a answer regarding what love is even though it may be ambiguous or nuance. And I hope to get the answer of why people don’t love and breakup.</li>
+<li><strong>What you find challenging about topic: </strong>The challenging part about this would be to read the all the poems and then also listen to people’s stories physically, in reddit, in social media and more and then writing from all those materials.</li>
+<li><strong>How familiar you are with topic: </strong>I can’t exactly say I am familiar with this topic and also say I am familiar with it at the same time. I would say a mix but I am excited to explore it and change my views or take inspirations.</li>
+</ul></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#core-essay"><span>Previous</span>Core Essay</a>
+<a class="next" href="#topic-explanation"><span>Next</span>Topic Explanation</a>
+</nav></section><section class="view" id="view-topic-explanation" hidden aria-labelledby="h-topic-explanation">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">5 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Essay preparation · 2 of 6</p>
+<h1 id="h-topic-explanation" tabindex="-1">Topic Explanation</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is my first real explanation of a topic, back when I was still on death and the soul. It covers what people believe, how experts approach it, and the works I'd read, like Plato's Phaedo and Kagan's Yale course. I chose it because death has been close to me and my family. I used to be scared of it, and reading regression novels and getting into philosophy helped.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><h3>An Overview to Death and Soul</h3>
+<p>Death, something almost everyone is afraid of and wants to escape from it. But do people know what death exactly means? What does dying mean exactly aside from the biological aspect of the body shutting down? Do we have a soul? What happens after we die? There are many questions like this, and the answer will differ from person to person when asked. And through this topic I hope to put forth my perspective about death and also present what other philosophers such as Plato, Aristotle, Descartes think about death. I hope to unveil some of the secrets about death.</p>
+<h3>Public &amp; Expert Approaches to Death and Soul</h3>
+<p>I think the public approach to death is not that proactive because most people already have a definition of their own and they don’t want to change that or even listen to others’ opinions. Even when they listen sometimes, they don’t take anything from it. This is especially true in a religious context, since different religions have very different views on death. For example, Christianity or Islam is not very open to the concept of death. On the other hand, Hinduism and Buddhism have a very open concept of death or nirvana.</p>
+<p>However, experts are very open to this topic. They approach death through logic, fallacies and proofs. In this day of modern science where technology is constantly evolving, a breakthrough in some part about death or something could be discovered. That is why every expert is in search of evidence to make their own theory.</p>
+<h3>The Importance of Death and Soul</h3>
+<p>This topic could be important to religious people who believe there is a soul and that, after death, people go to heaven or hell. Or this could be important to people who are atheist or agnostic or anything similar and think that there is nothing after death, i.e., the soul doesn’t exist. This could be important to people who are searching for the meaning of death. What does it mean to die? For some people, it could just be curiosity or interest in this topic. As death itself is a very mysterious and closed topic to people, the reason for importance could vary according to the person’s interest.</p>
+<h3>Works Related to Death and Soul</h3>
+<p>The works related to death are numerous, and among them <em>Phaedo by Plato </em>is one of the first and a very good work related to death. The <em>Phaedo </em>is a dialogue in which Socrates argues for what the soul is and what happens after death. He tries to prove that the soul is immortal and I would say he was successful to some extent too. But he doesn’t explain where the soul comes from or prove the existence of the soul. His argument is only valid when a soul exists at all. But we don’t know if it exists.</p>
+<p>And another discussion by Shelly Kagan in his Death course is just the opposite of phaedo. He talks about the physicalist view that the soul doesn’t exist. Everything is the working of our brain. The human body is just a body that can do a certain function and after our death, there is nothing. He takes out the loopholes in phaedo and analyses and discusses them and says how souls can’t exist.</p>
+<p><br>Similarly, there are other philosophers like Descartes who wrote about how the soul and body are different but interact with each other. This is a similar but different concept to that of Plato’s.</p>
+<h3>My Reason for Selecting Death and Soul</h3>
+<p>Death has been very close to me and my family. Losing my father and cousin at a young age, getting seriously sick more than once, nearly dying from appendicitis, and losing my grandmother are times when death has been very close. And I used to be really afraid of death. Why did it happen to me? What did I do wrong? So many questions always used to linger in my mind and I always used to think about them. And that made me read novels related to regression, which showed me that even infinite lives don't matter as something always goes wrong even if you try to fix something. Anyways, reading novels, watching anime and reading manga helped me grasp some form of knowledge about death and I learned to not be scared of it. This led me to the curiosity toward philosophy and as I read and watched videos about the gods, universe and how things came to be and that also made me curious about death. And It hasn’t been that long since I have been exploring Death and through this class, I thought this would be the perfect opportunity to satisfy my curiosity deeply and also do the writing.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#potential-topic-list"><span>Previous</span>Potential Topic List</a>
+<a class="next" href="#annotated-bibliography"><span>Next</span>Annotated Bibliography</a>
+</nav></section><section class="view" id="view-annotated-bibliography" hidden aria-labelledby="h-annotated-bibliography">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">6 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Essay preparation · 3 of 6</p>
+<h1 id="h-annotated-bibliography" tabindex="-1">Annotated Bibliography</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is where the topic changed. At first I was writing about death and the soul, but I'd only read Phaedo, some web novels, and a few short stories, and I couldn't connect them. While I was summarizing the web novel <em>A Regressor's Tale of Cultivation</em> for a citation, I realized its main character, who ends up with so much memory that he barely knows who he is, was asking something bigger: what makes you the same person? That tied the soul in Phaedo, <em>White Nights</em>, and the novel together. So I collected ten sources on personal identity, with what each one is, what interested me, and how I'd use it.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><h3>Research Question</h3>
+<p>What is personal Identity? What defines you? Does it depend on the memory of a person, as Locke argues? But a person’s memory could be copied. Or does it reside in the soul, as Plato says in Phaedo? This essay/paper will discuss what personal identity is, and we will discuss it through papers related to AI, souls, physical body, web novels and even short stories. I will try to go in depth as I can, and I am having really fun exploring this topic, and I feel this resonates with me a lot. I am even thinking of talking about personal identity from the perspective of Love, which I hope will be fruitful (It is already fun).</p>
+<h3>Annotated Bibliography</h3>
+<p class="cite">Plato. Phaedo. Translated by Benjamin Jowett, Project Gutenberg, 29 Oct. 2008, https://www.gutenberg.org/files/1658/1658-h/1658-h.htm.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> This dialogue depicts Socrates's final hours before his execution, in which he offers several arguments for the soul's immortality, where he debates with his friends and gives his final teaching to his followers as he is freed from living.</li>
+<li><span class="lbl">Most interesting:</span> The dialogue shifts between every person and Socrates, where he wins every argument and proves to them the soul is immortal. But he also talks about the afterlife, hell and rewards, which goes into mythology, and he says he cannot prove the exact, but he is sure the afterlife exists, and there is some sort of system in place.</li>
+<li><span class="lbl">Usefulness:</span> The afterlife myth requires that a specific individual soul's memories and moral record persist for judgment to make sense. This argument is one of the weakest in the text, and this gap first pushed me to ask whether memory, rather than soul, is what actually secures personal identity.</li>
+</ul>
+<p class="cite">Jowett, Benjamin. Introduction. Phaedo, by Plato, Project Gutenberg, 29 Oct. 2008, https://www.gutenberg.org/files/1658/1658-h/1658-h.htm.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> Jowett's critical introduction, published alongside his translation, walks through the Phaedo's arguments and questions whether they hold up to modern scrutiny.</li>
+<li><span class="lbl">Most interesting:</span> Jowett points out that Socrates’ organic analogies, comparing the soul’s survival to a seed growing into corn, do not function as real proof once examined closely, especially “in a scientific age.”</li>
+<li><span class="lbl">Usefulness:</span> Reading a 19th-century classicist doubt Plato’s own arguments gave me another angle from which I could process the dialouge.</li>
+</ul>
+<p class="cite">Tremendous, A Regressor's Tale of Cultivation, https://wetriedtls.com/series/a-regressors-tale-of-cultivation.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> A web novel following Seo Eun-hyun, who dies and regresses through thousands of lifetimes, retaining his memories each time, and we follow his life as it unfolds in the cultivation world.</li>
+<li><span class="lbl">Most interesting:</span> At one point, SEH had so much memory that he didn’t have a personal identity, and he didn’t even know who he was properly. The plot related to this matches what I want to talk about, and it goes a little deep into it.</li>
+<li><span class="lbl">Usefulness:</span> This is my one and only case of personal identity under memory overload rather than memory loss, instead of too little memory or the memory transfer problem.</li>
+</ul>
+<p class="cite">Dostoevsky, Fyodor. White Nights. Translated by Constance Garnett. https://onemorelibrary.com/index.php/en/?option=com_djclassifieds&amp;format=raw&amp;view=download&amp;task=download&amp;fid=11294.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> A lonely, unnamed narrator known only as "the dreamer" meets a young woman, Nastenka, over four nights in St. Petersburg, falls in love with her, and is left alone again when her actual lover returns.</li>
+<li><span class="lbl">Most interesting:</span> When Nastenka asks the narrator to tell her his history, he responds that he has none and that he has lived entirely alone, with no story to tell, directly raising the question of whether a person without an accessible personal history is fully a person at all.</li>
+<li><span class="lbl">Usefulness:</span> This is my case of identity built on almost no memory rather than too much, giving me, alongside RTOC, both extremes of the memory spectrum to test Locke's theory against.</li>
+</ul>
+<p class="cite">Göncüoğlu, M. Önder. "Lonely Dreamers in Dostoevsky's White Nights and Sabahattin Ali's Madonna in a Fur Coat: A Comparative Analysis." Ankara Üniversitesi Dil ve Tarih-Coğrafya Fakültesi Dergisi, vol. 57, no. 1, 2017, pp. 202–225.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> A comparative literary analysis situating the narrators of White Nights and Madonna in a Fur Coat within the Russian literary archetype of the "superfluous man," drawing on Bakhtin's concept of dialogism to argue their defining trait is imprisonment in monologue rather than genuine connection with others.</li>
+<li><span class="lbl">Most interesting:</span> The article shows both narrators fall for an idealized fantasy version of a woman before ever really knowing her as a real person, meaning their capacity for connection was already compromised before the relationship even began.</li>
+<li><span class="lbl">Usefulness:</span> This scholarly reading gave me the theoretical vocabulary, monologue versus dialogue, to explain why the narrator's claim to have "no history" is not incidental but central to the story's account of what a self without real connection to others actually is.</li>
+</ul>
+<p class="cite">Locke, John. "Of Identity and Diversity." An Essay Concerning Human Understanding, Book II, Chapter 27, Wikisource, en.wikisource.org/wiki/An_Essay_Concerning_Human_Understanding_(Troutman_%26_Hayes_1853)/Book_2/Chapter_27.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> Locke separates "person" from "man" and argues personal identity consists not in sameness of soul or body but in continuity of consciousness, chiefly memory, illustrated through his prince-and-cobbler thought experiment.</li>
+<li><span class="lbl">Most interesting:</span> Locke calls "person" a forensic term, meant specifically to justly assign praise, blame, and punishment, tying personal identity directly to moral responsibility rather than metaphysics alone.</li>
+<li><span class="lbl">Usefulness:</span> This is the theory my entire paper tests. If identity really is just continuity of memory, that content seems, at least in principle, copyable, which is exactly the possibility AI reconstructions put pressure on.</li>
+</ul>
+<p class="cite">Parfit, Derek. Reasons and Persons. Oxford University Press, 1984, https://philarchive.org/archive/SAUITP.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> Using thought experiments involving teleportation and brain fission, Parfit argues that strict personal identity is not what matters in survival, only psychological continuity, which he calls Relation R, matters, and that this can hold in a one-to-many way with no determinate answer as to "which one is really me."</li>
+<li><span class="lbl">Most interesting:</span> In his branch-line case, the original person does not immediately die after teleporting, so two equally valid people briefly coexist, one of whom is about to die, showing identity can break down without anything bad actually happening.</li>
+<li><span class="lbl">Usefulness:</span> Supplies the sophisticated middle position between Plato's soul and Locke's simple memory theory, and gives me the specific concept, wholesale psychological continuity, that I test against both fictional and real AI reconstructions.</li>
+</ul>
+<p class="cite">Newton, Casey. "Speak, Memory." The Verge, 6 Oct. 2016, www.theverge.com/a/luka-artificial-intelligence-memorial-roman-mazurenko-bot.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> Long-form journalism telling the true story of Eugenia Kuyda, who built a chatbot trained on thousands of text messages from her friend Roman Mazurenko after his sudden death, a project that later became the basis for the Replika app.</li>
+<li><span class="lbl">Most interesting:</span> The mixed reactions from Mazurenko's own family and friends, where some were comforted and some unsettled, showing the philosophical question of whether the bot is “really him” playing out as a real, unresolved disagreement among people who actually knew him.</li>
+<li><span class="lbl">Usefulness:</span> This is my concrete, documented case rather than a hypothetical, letting me analyze a real AI reconstruction using Locke’s, Parfit’s, and Roache’s frameworks instead of a purely invented scenario.</li>
+</ul>
+<p class="cite">"Be Right Back." Black Mirror, season 2, episode 1, written by Charlie Brooker, directed by Owen Harris, Channel 4, 11 Feb. 2013.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> A grieving woman uses a service that reconstructs her deceased boyfriend from his digital footprint, first as a chatbot, then a voice, then a physical android, only to find the reconstruction unsettlingly compliant and without any real independent will.</li>
+<li><span class="lbl">Most interesting:</span> The horror of the episode is not that the copy is unconvincing, it is that it is convincing enough to be disturbing precisely because it lacks the resistance, moods, and self-preservation instinct a real person would have.</li>
+<li><span class="lbl">Usefulness:</span> Dramatizes, in concrete and emotional terms, the exact philosophical problem Roache identifies abstractly: a reconstruction built from fragments of a person's outputs rather than their whole continuous mind.</li>
+</ul>
+<p class="cite">Roache, Rebecca. "A Defence of Quasi-Memory." Philosophy, vol. 81, no. 2, 2006, pp. 323–355.</p>
+<ul class="ann">
+<li><span class="lbl">Description:</span> A philosophy journal article investigating whether "quasi-memory," a memory-like state not caused by one's own past experience, is a coherent concept, testing it against Locke's circularity problem and Parfit's use of it to argue that identity is not what matters in survival.</li>
+<li><span class="lbl">Most interesting:</span> Roache distinguishes piecemeal memory-trace copying, which produces a weaker, impoverished q-memory lacking its original psychological context, from wholesale psychological continuity, arguing only the latter actually rescues the concept from objection.</li>
+<li><span class="lbl">Usefulness:</span> Gives me the precise technical vocabulary and argument structure for my central claim: that AI reconstructions are structurally a piecemeal case, extracted information about a person rather than a full transfer of their mind, and therefore cannot do the identity-preserving work Locke's theory would need them to do.</li>
+</ul>
+<h3>Research Update</h3>
+<p>At first I was going to write about Death and the soul and how every religion looks at it differently and what people’s perspectives on it are. But as I researched the topic, I had only read Phaedo, web novels and some short stories, but I didn’t have any idea how to connect them. And as I was writing some summary or something about the web novel to use as a citation, I had a thought, saying, wait, I could write about personal identity, and with that eureka moment, I started researching, and man, did I find some good papers and one episode of a series.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#topic-explanation"><span>Previous</span>Topic Explanation</a>
+<a class="next" href="#central-question"><span>Next</span>Central Question</a>
+</nav></section><section class="view" id="view-central-question" hidden aria-labelledby="h-central-question">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">7 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Essay preparation · 4 of 6</p>
+<h1 id="h-central-question" tabindex="-1">Central Question</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>Here I wrote down where my research left me. Every definition of personal identity I read had flaws, and I started wondering if a concrete definition exists at all. So instead of asking what personal identity is, I asked what it isn't, and planned to narrow it down by elimination. I also asked how big or small personal identity is, since a person with nothing and a person with everything both seem to have one, and whether every human is unique. The essay didn't end up using elimination. It shows where each theory breaks instead, and the &ldquo;nothing vs. everything&rdquo; idea comes back in its section on two extremes.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><h3>Post-Research Positions</h3>
+<ul class="lst">
+<li><p>My major realisation during my major topic was that all the methods philosophers used to define personal identity were flawed and couldn’t really fit. That made me think if there really is a concrete term for personal identity. Just What is Personal Identity? I see my topics as different, unique and maybe even relatable to everyone because no one really knows who they are and how their identity is shaped. Everyone in their life, at least once, has had or will have an identity crisis. And I think it is different in that way.</p>
+<p>No, I have a different topic now. When I started researching my topic, I was very fascinated and really loved reading the perspectives of other philosophers, and it was really fun. But from the bottom of my heart, I felt that the topic wasn’t really the right one. And as I was researching more about my topic, I had a sudden realisation from the web novel I had read a long time ago. And it gave me a way to Personal Identity, and now I want to write about personal identity.</p>
+</li>
+<li><p>Aside from the fact that the definition of personal identity itself remains uncertain, the question of just how big or small personal identity is also another question. It can be understood as a person who has no interactions in his life and a person who has a lot of interactions in his life or it could be better framed as a person who has nothing and a person who has everything; they both have personal identity. But is the personal identity of one smaller than other or is it bigger than the other or is it just equal?</p>
+</li>
+<li><p>In this topic, before I wish to define what personal identity is, I want to answer what a human is. As in, our emotions, feelings and everything – are they unique? Because I feel the answer to personal identity comes after this. If we can prove every human is unique, then I believe we could approach it from a different lens.</p>
+</li></ul>
+<h3>Central Questions</h3>
+<p>We have hundreds of people define what personal identity is from their perspective, but I ask the question: What is not personal identity?</p>
+<p>We know from many philosophers what personal identity is according to their analogy and perspective. Some say our memories define our personal identity and that it is stored in our soul. And say that if you travel to another body with the soul, then your personal identity is that of that soul. Some say that personal identity doesn’t matter and that only survival matters for us humans. Then there is also the concept of pseudo-memory, which was coined by another philosopher. And just like this, there are more and more definitions of personal identity, and none gives a proper answer. So what if we approach it from the perspective of what is NOT personal identity? Let’s say we do it through the process of elimination; we might arrive at a more concrete position and even if we donot then we will learn that this process doesn’t work or we could approach it from a different way.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#annotated-bibliography"><span>Previous</span>Annotated Bibliography</a>
+<a class="next" href="#audience-goals-style"><span>Next</span>Audience, Goals, and Style</a>
+</nav></section><section class="view" id="view-audience-goals-style" hidden aria-labelledby="h-audience-goals-style">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">8 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Essay preparation · 5 of 6</p>
+<h1 id="h-audience-goals-style" tabindex="-1">Audience, Goals, and Style</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>Here I worked out who I was writing for and how I wanted to sound. I pictured readers who are wondering who they are, and I wanted them to take something away even if they disagreed. I planned a serious tone, with me as the lost person asking questions and answering them out loud, plus some personal story and poetry. You can see it in the essay's voice and the poem at the end.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><h3>Audience</h3>
+<p class="prompt">Based on the topic you are exploring and the central question you have built, who do you think would be most interested in your essay?</p>
+<p>I think almost everyone would be interested in my essay because it is a topic I think everyone wants to know the answer to. Many people go through identity crises, imposter syndrome and whatnot throughout their lives, and I think this essay will pique their interest.</p>
+<p class="prompt">If you could make sure that a certain person or certain set of people would read the essay, who would you want to see the essay and why?</p>
+<p>If a certain person, at any time, could see my essay, I would want Plato or Aristotle to see it (no matter how bad or good my essay will be) because those people, I believe, were some of the greatest philosophers and people who sort of invented philosophy. And for a certain set of people, I would say normal people, so it could be interesting to them, and I wish to give them a different perspective from my viewpoint, so it would give them more perspective to think from.</p>
+<p class="prompt">If you could imagine the person who would be most likely to enjoy this essay or who would gain the most from reading this essay, who are they, where are they from, and what are their characteristics (demographics, beliefs, personality, etc.)?</p>
+<p>I think people who are troubled about their identity or people who are interested in this topic would enjoy it. The people who would gain the most would be the people who are wondering who they are and why they are who they are, cause their personal identity was different before.</p>
+<h3>Goal</h3>
+<p class="prompt">Based on who you think your audience might be and who you want the audience to be, what are your goals for the audience? What do you want to do to, with, or for them? (100 words minimum)</p>
+<p>I wish to give my audience information and my perspective, which will make some more interested in the topic, some may enjoy it, some may learn from it, and some may even dislike it. I just want my audience to at least take something from the essay; even if they dislike it, they are taking something from the dislike after all. Some people may not agree with my viewpoint, and some may even be offended, but I don’t want them to feel that, as this is just an essay about my opinion. I want to write an insightful essay that helps people in any way.</p>
+<h3>Tone, Mood, and Style</h3>
+<p class="prompt">What do you think the tone of the essay should be in addressing its topic and its audience? In other words what sort of relationship do you want to build between yourself as the author and your topic and audience? What relationship do you want to portray between yourself and the topic, and why? What relationship do you want to establish between yourself and the reader, and why?</p>
+<p>The tone of the essay will be asking questions, answering them myself as the author, as the reader also answers that question(maybe) with their own and compares it. In other words, I want to present myself as the guy asking questions and answering them to the audience (idk how to say it). I want to portray myself as someone who is lost and is asking questions and also then answers them through some sort of inner thought or something like that. I want to establish myself as the lost person to the reader because I believe it resonates with most of the people.</p>
+<p class="prompt">What do you think the overall mood of the essay will be? Will the mood largely be static, or do you expect to shift through a range of moods? What parts of your topic and your goals call for different moods? Why does this topic, audience, and goal call for this mood or these moods?</p>
+<p>I think the mood would mostly be static. This topic is a serious one, so I believe the audience watching would be serious too, and so does my goal.</p>
+<p class="prompt">Style-wise, what are some of the features of the writing you want to achieve? Do you want to be playful or serious? Personal or broad? Formal or conversational? Light or heavy? Do you want to experiment with structure or poetics? Do you want to interweave personal or historical narrative into your essay? How is your goal helped by these choices?</p>
+<p>I want to be serious with both the personal and the broad style. I want to be formal but ask the reader questions with a heavy tone. I am not sure if I will add poetics or not, but I do want to experiment with them. I will be using literature and philosophical texts from the past, so I don’t really know if they are considered historical or not, but yeah, I will also use personal narrative. My goal is helped by these choices because my topic is a broad yet personal one, can be light but is a serious one, could be both playful or serious. And lastly, poetry is, I believe, one of the best media for this topic, and I want to experiment in some ways.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#central-question"><span>Previous</span>Central Question</a>
+<a class="next" href="#outline"><span>Next</span>Outline</a>
+</nav></section><section class="view" id="view-outline" hidden aria-labelledby="h-outline">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">9 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Essay preparation · 6 of 6</p>
+<h1 id="h-outline" tabindex="-1">Outline</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is the plan for the essay: a thesis, then six steps with my sources under each one. It goes from Locke, to ordinary change over time, to duplication, to a real AI case, to the two extreme characters, and ends with what it all means. The follow-up covers what I was unsure about. The essay keeps the plan's main argument, that every theory breaks in the same place, and adds the Ship of Theseus and the social-self idea I'd left out. It drops the brain point, and it ends with something new: even with too much or too little memory, someone is still there.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><h3>Thesis</h3>
+<p>So here is the question I cannot actually answer about myself: am I the same person I was a year ago? Yesterday? An hour ago? Am I even the same person in front of my mom as I am in front of my friends, on the same afternoon? I do not think any of the theories this essay looks at actually solve that for me, not the idea that some soul holds me together underneath it all, not Locke's claim that memory alone does the job, not even Parfit's claim that psychological continuity is really what matters. Every one of them falls apart the moment you push on it hard enough, whether that push is something as violent as an AI chatbot built out of a dead man's old texts, or something as ordinary as just living another day. I want to test these theories against my own uncertainty about which version of me is actually "me," against a real case of AI reconstruction, and against two literary extremes, a character with far too much memory to even hold onto, and a character with almost none at all. And I think the fact that every theory fails in the same place is more interesting than any one of them being simply wrong. Maybe the real problem is not that we are missing the right answer. Maybe it is that we are asking "personal identity" to do too many different jobs at once, justify blame, let us survive, let us be recognized, let us recognize ourselves, and no single theory was ever built to do all of that at the same time.</p>
+<h3>Outline</h3>
+<p class="o o1">I. Starting with Locke, since he's the one who actually splits "person" away from both "man" and "soul" in the first place.</p>
+<p class="o o2">a. Walking through what Locke means by "man" (just the biological animal) versus "person" (something defined by consciousness), and why he calls personal identity a forensic term, basically a legal and moral label, not a metaphysical one.</p>
+<p class="o o3">i. Source: Locke, "Of Identity and Diversity"</p>
+<p class="o o2">b. Then Getting into the prince-and-cobbler thing to point out that Locke straight up says the same soul without shared memory would not make you the same person.</p>
+<p class="o o2">i. Source: Locke, "Of Identity and Diversity"</p>
+<p class="o o2">c. Now the obvious problem: if you define identity through memory, are not you just assuming the very identity you are trying to prove?</p>
+<p class="o o1">II. Now to test Locke's theory the slow way, through ordinary change over time, no copying or duplication needed at all.</p>
+<p class="o o2">a. As Heraclitus said, since "you cannot step in the same river twice" is basically this whole argument in one line, and it is 2,500 years old.</p>
+<p class="o o3">i. Source: Heraclitus, fragments on flux</p>
+<p class="o o2">b. And then Parfit's connectedness versus continuity distinction, the rope made of overlapping fibers, since that is the move that answers my own question.</p>
+<p class="o o3">i. Source: Parfit, Reasons and Persons</p>
+<p class="o o2">c. Again, Now mention that the brain stays more physically stable than the rest of the body, which is basically why people like Kagan think the brain is doing the real identity-carrying work.</p>
+<p class="o o2">d. Finally, Trying out my own idea: let’s treat a personality like an integral, adding up infinitely many instants into one whole, finite self. What will happen?</p>
+<p class="o o1">III. Now testing it the hard way, duplication, which is way more violent than just existing day to day.</p>
+<p class="o o2">a. Get into Parfit's fission and teleportation stuff, and his idea of Relation R, basically psychological continuity without needing strict identity.</p>
+<p class="o o3">i. Source: Parfit, Reasons and Persons</p>
+<p class="o o2">b. Then Bring in Roache's quasi-memory concept, why copying memories piecemeal gives you a weaker, emptier copy that is missing all the original context.</p>
+<p class="o o3">i. Source: Roache, "A Defence of Quasi-Memory"</p>
+<p class="o o2">c. Discussing the fact that the only version that actually works is a full, wholesale transfer, and that needs an empty mind to receive it, which might not even be a coherent thing to ask for in the first place.</p>
+<p class="o o3">i. Source: Roache, "A Defence of Quasi-Memory"</p>
+<p class="o o1">IV. Bringing in a real case instead of just hypotheticals, AI reconstructing someone after they die.</p>
+<p class="o o2">a. Eugenia Kuyda's chatbot, built from her dead friend Roman Mazurenko's old texts. This actually happened, it is not a thought experiment.</p>
+<p class="o o3">i. Source: Newton, "Speak, Memory"</p>
+<p class="o o2">b. Bring in Black Mirror's "Be Right Back" for the emotional, gut-punch version of the exact same thing.</p>
+<p class="o o3">i. Source: "Be Right Back"</p>
+<p class="o o2">c. Arguing about both of these as they are exactly the case Roache already showed does not hold up.</p>
+<p class="o o1">V. Testing the amount-of-memory question through two characters at total opposite extremes.</p>
+<p class="o o2">a. Seo Eun-hyun from <strong>A Regressor's Tale of Cultivation</strong>, who has so much memory from thousands of lifetimes that it stops being memory and just turns into instinct.</p>
+<p class="o o3">i. Source: A Regressor's Tale of Cultivation</p>
+<p class="o o2">b. The narrator of White Nights, who has basically no personal history at all, and flat out tells Nastenka he has none.</p>
+<p class="o o3">i. Source: Dostoevsky, White Nights</p>
+<p class="o o3">ii. Source: Göncüoğlu, "Lonely Dreamers in Dostoevsky's White Nights and Sabahattin Ali's Madonna in a Fur Coat"</p>
+<p class="o o2">c. Discussing how both extremes still have identity, or the lack of it, happening regardless of how much memory is actually there. So maybe the amount was never the real variable to begin with.</p>
+<p class="o o1">VI. Wrap it up: what does it actually mean that every single theory breaks at the same spot?</p>
+<p class="o o2">a. Soul, memory, psychological continuity, all of them fail right where duplication or extraction happens, even though they are built on completely different foundations.</p>
+<p class="o o2">b. Argue the real disagreement is not about evidence, it is about what we actually want identity to do, justify blame, let us survive, let us be recognized, let us recognize ourselves. Maybe no theory was ever meant to do all of that at once.</p>
+<p class="o o2">c. Come back to my own question from the start, and leave it open: could some future tech, like a full connectome scan, actually fix this, or would it just move the same unanswered question onto a new kind of material?</p>
+<h3>Follow Up</h3>
+<p>Honestly, I don’t know if this whole thing is going to work, but it was really fun to put together, and I think a lot of it might still change once I actually start writing. I’ve got this other idea floating around too, like, since you’re not the same you every single day, doesn’t that mean you’re not the same you around your family versus your friends either? So maybe social identity and personal identity are kind of evolving together, same process, not two separate things. But I haven’t found a solid place to actually put that yet, so I’m leaving it out for now. That’s basically it. I don’t really know what else to say, I just hope writing it ends up being as fun as planning it was.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#audience-goals-style"><span>Previous</span>Audience, Goals, and Style</a>
+<a class="next" href="#journal-1"><span>Next</span>Journal Entry 1</a>
+</nav></section><section class="view" id="view-journal-1" hidden aria-labelledby="h-journal-1">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">10 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Journal entry · 1 of 4</p>
+<h1 id="h-journal-1" tabindex="-1">Journal Entry 1</h1>
+<p class="date">20th August 2026</p>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is my first journal entry, about how I feel about writing. School taught me one rigid structure for everything, even letters, and I never liked it. I wrote about my own style instead: poems in odd structures, even starting an essay with the conclusion. I included a free-verse poem, &ldquo;Please stop hiding,&rdquo; which is simply someone who wants to be loved. I still find structure rigid, but I feel a little freer now that I get to explore ideas.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><p>I have never really had a specific course dedicated to writing like I do now in Howard. I had an English class where we would learn passage, grammar, writing and more, almost all the things for writing. That was the time when I was first introduced to formal writing. I had an unpleasant experience related to writing inside my classroom because I was restricted by the rules and structures of formal writing. I couldn’t express my ideas freely because I had to start with the Introduction, body and conclusion type structure for essay, similar structure for pie chart report or bar graph report. Even for letters we had a fixed structure. I know that writing date, salutation and those things is important but even in the letter why must I start and end it like an essay?</p>
+<p>So, yeah. In my school, I had to follow that single monotonous structure for nearly everything and didn’t have any creative freedom. And I think the hate is fair too because this has never really been useful to me outside of classroom. What has been useful is my own style of writing, whether it be writing poem in different structure or not following at all or maybe starting an essay with a conclusion. Wouldn’t starting the essay with a conclusion be funny and interesting. Cause you are reading it backwards and I think that piques a different form of interest in your brain. Inside the classroom I was restricted by the rules and outside, I am not, which allows me for my creative freedom. You can just take this poem I wrote for example:</p>
+<div class="poem"><div class="stanza"><span class="ln">Please stop hiding,<br>Hiding away from me</span><span class="ln">As if I'm hideous,</span><span class="ln">As if I'm a creep,</span><span class="ln">All that I want is</span><span class="ln">To be loved</span><span class="ln">Loved by you</span><span class="ln">In the purest form possible</span><span class="ln">All that I want is</span><span class="ln">To love you,</span><span class="ln">Love you in</span><span class="ln">The purest form possible-</span><span class="ln">So,</span><span class="ln">Let me be loved by you</span><span class="ln">So,</span><span class="ln">Let me love you</span><span class="ln">Please</span></div></div>
+<p>This poem doesn’t have a fixed structure and is written in free stanza. But does that mean this is not a poem and it doesn’t mean anything. It does. Although this was a poem I wrote when I just started writing and it was an experimentation with the structure and be free. My habit of wanting to experiment and need freedom to explore structures in writing also reflects on me as a thinker, organizer as well as a writer. And developing these habits to the peak and honing my critical thinking would make me a better poet and possibly a cool person (you know like the cool poetry guy).</p>
+<p>I am just a newbie/amateur deciding between many roads diverging in a yellow wood and just like Robert Frost I cannot take all the roads. I don’t know which one I will take, the less travelled, the more travelled, the one with hardships, the easier one or maybe even a new one. But I want to see myself as someone who chose the road very confidently and look back and be content and happy with my choice. Be careful my future self, you need to be unique (even more than Robert Frost).</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#outline"><span>Previous</span>Outline</a>
+<a class="next" href="#journal-2"><span>Next</span>Journal Entry 2</a>
+</nav></section><section class="view" id="view-journal-2" hidden aria-labelledby="h-journal-2">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">11 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Journal entry · 2 of 4</p>
+<h1 id="h-journal-2" tabindex="-1">Journal Entry 2</h1>
+<p class="date">11th September, 2026</p>
+<aside class="blurb"><p class="blabel">About this piece</p><p>I wrote this when I'd nearly finished Plato's Phaedo, and it made me even more excited about death as a topic. I'd never written anything this long, so I was nervous and excited. Looking back, the long essay felt good, and I loved choosing new texts and learning new things. I also wrote about wanting to go into academia. I still do, with philosophy alongside it.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><p>Today I read phaedo and I nearly finished it. It gave me even more excitement to explore the topic of death. For once, I even considered if I should major in philosophy instead. But well I know I won't and I shouldn't. And I am really excited to read the perspective of other philosophers too. But I don't know which way I should lean into because, every argument I listen to, they are convincing and I am confused. But maybe due to my partial bias, I have already leaned towards a side.</p>
+<p>I have never written an essay this long before. The most I have written is 500 words and maybe 1.5-2k words in my Uchicago supplement but idk if it counts. In formal writing, the most I have done is maybe 500 words so I am pretty nervous and also excited about this. As for my opinion on this type of writing. I would say it is positive because it is an important type of writing. People write letters, analysis, reports, presentations and more in really long form after all.</p>
+<p>I am excited that I will get to explore the topic I love in depth and nervous because I am trying to figure out how to write this essay as this will be my first long writing. Regardless of if it will be good or bad, I hope I will learn a lot from it for my future endeavors.</p>
+<p>I want to go into academia (maybe) and writing will be a very important part of that so I want to really improve my writing and hope I get to write a lot of papers in the future. Or even if I don't go into academia, writing is important regardless. It is important to write essays, reports, or even poetic love letters.</p>
+<p>The most exciting part for me, I think, is the fact that this is only ENGW 104 and I will also have to take ENGW 105 where I think it will be fun too. Because 104 has been so fun. I just hope in the next semester in 105 I will have even more fun challenges (sort of) for me so that I can learn a lot.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#journal-1"><span>Previous</span>Journal Entry 1</a>
+<a class="next" href="#journal-3"><span>Next</span>Journal Entry 3</a>
+</nav></section><section class="view" id="view-journal-3" hidden aria-labelledby="h-journal-3">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">12 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Journal entry · 3 of 4</p>
+<h1 id="h-journal-3" tabindex="-1">Journal Entry 3</h1>
+<p class="date">18th October 2026</p>
+<aside class="blurb"><p class="blabel">About this piece</p><p>By this point I'd landed on personal identity and was excited about it. I predicted the writing would come easily and go smoothly, and it went even more smoothly than I predicted. I also listed what I'd read, from Plato and Locke to <em>White Nights</em> and the web novel, and said I might add a short poem. I did, and it's the poem at the end of the essay.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><p>What even is personal identity? A question about which I am writing the essay and i feel really great about it. I really loved writing it and am feeling really positive about it. And I am even more excited to write and am thinking just how great it would be as I feel like the writing will come naturally to me and am really excited just thinking about that. Yes, I feel that the writing process will mostly be smooth. I am hopeful with the writing process till now and am hoping that nothing goes bad. During the research I had really fun and exciting as I got to know so many perspective of so many authors.</p>
+<p>Plato’s view on how soul is immortal and how there is a sort of heaven and earth, Locke’s theory about how personal identity is associated with the person part of a human body which contains memories and reading how that is flawed in its own way. Then there was the white nights short story written by fyodor dostoevsky which was also intriguing and fun in its own way. That person who fell in love in just 5 minutes, who doesn’t even bother naming himself and even then he has a personal identity. Then the novel Regressor’s Tale of Cultivation, in which there is the Seo Eun hyun with all of this memories jumbled up and just moving based mostly on instincts and so much more. I got to know so many more new things and it was really exciting. And no i haven’t become an expert in this topic at all. If just this much was enough to make me an expert then what fun would it be.</p>
+<p>I am even thing whether I should add a short poem about personal identity. I have some ideas about writing the poem and i am thinking of writing it and maybe adding it to the essay, but let us see what will happen.</p></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#journal-2"><span>Previous</span>Journal Entry 2</a>
+<a class="next" href="#journal-4"><span>Next</span>Journal Entry 4</a>
+</nav></section><section class="view" id="view-journal-4" hidden aria-labelledby="h-journal-4">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">13 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Journal entry · 4 of 4</p>
+<h1 id="h-journal-4" tabindex="-1">Journal Entry 4</h1>
+<p class="date">9th November, 2026</p>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is my reflection after finishing the essay. The process leading up to it helped me move from death to personal identity, and the bibliography and idea-writing steps are the ones I'd reuse. My favorite part was the poem and putting my own perspective forward. My least favorite was how long it took. I also included the poem I cut, since it didn't fit the essay. It's the garden poem, and it's also my bonus piece.</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><p>Writing the core essay was very fun and the process leading to it was even more fun as I got to learn so many more things that I was always interested in but couldn’t really explore. The process we went through was very helpful in writing the essay and shaping an idea because, I switched my idea from the initial topic of Death to Personal Identity and what helped me discover or even choose personal identity was the process leading towards the core essay. If I was working on my own long form project, the things i would really incorporate would be the bibliography part and the writing the ideas I have parts cause I think those really help with the process that follows tremendously.</p>
+<p>The favourite part while writing this essay was obviously the poem and the parts where I try to put my perspective forth to the audience and the least favourite part was probably the time it took to write that essay. Even then I am very happy that I completed that essay and could put something forth from my mind into it. In the essay I have only put one poem, but originally, I wanted to put 2 poems. But, after writing the essay and reviewing it, the poem felt too unnatural and out of place to put so I removed it. This is like a blooper or func fact you could say. But yup, it was really fun and I love the whole experience of ENGW 104 A LOT!</p>
+<p>Here is the poem I am talking about:</p>
+<div class="poem"><div class="stanza"><span class="ln">I had a child inside me</span><span class="ln">The child that used to tend my garden</span><span class="ln">Colorful and bright as he ran barefoot</span><span class="ln">Lost in the fragrances of the flowers</span><span class="ln">With a smile extending to his ears,</span><span class="ln">And Sometimes he used to cry</span><span class="ln">Cry in the arms of the world</span><span class="ln">Wound on the knee</span></div><div class="stanza"><span class="ln">But the world grew jealous</span><span class="ln">And as its shadow crept in</span><span class="ln">That child... just disappeared</span><span class="ln">And now I search for that child everywhere</span></div><div class="stanza"><span class="ln">But alas he was consumed by the darkness</span><span class="ln">Darkness that withered all the flowers from his garden</span><span class="ln">Along with him</span></div></div></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#journal-3"><span>Previous</span>Journal Entry 3</a>
+<a class="next" href="#bonus"><span>Next</span>Bonus Piece: I Had a Child Inside Me</a>
+</nav></section><section class="view" id="view-bonus" hidden aria-labelledby="h-bonus">
+<div class="topbar"><a class="back" href="#hub">&larr; All work</a><span class="pos">14 of 14</span></div>
+<article class="piece">
+<p class="eyebrow">Bonus piece (optional)</p>
+<h1 id="h-bonus" tabindex="-1">Bonus Piece: I Had a Child Inside Me</h1>
+<aside class="blurb"><p class="blabel">About this piece</p><p>This is the poem I cut from the essay. It didn't fit the essay's argument, but I still like it, so it's my optional bonus piece. It's about a child I carry inside me and the world that grew jealous of him. It shows the poetry side of my writing, which the essay only touches, and it circles the same question as the essay: what happens to who you were?</p></aside>
+<p class="asub">The piece, as I wrote it</p>
+<div class="text"><div class="poem"><div class="stanza"><span class="ln">I had a child inside me</span><span class="ln">The child that used to tend my garden</span><span class="ln">Colorful and bright as he ran barefoot</span><span class="ln">Lost in the fragrances of the flowers</span><span class="ln">With a smile extending to his ears,</span><span class="ln">And Sometimes he used to cry</span><span class="ln">Cry in the arms of the world</span><span class="ln">Wound on the knee</span></div><div class="stanza"><span class="ln">But the world grew jealous</span><span class="ln">And as its shadow crept in</span><span class="ln">That child... just disappeared</span><span class="ln">And now I search for that child everywhere</span></div><div class="stanza"><span class="ln">But alas he was consumed by the darkness</span><span class="ln">Darkness that withered all the flowers from his garden</span><span class="ln">Along with him</span></div></div></div>
+</article>
+<nav class="pn" aria-label="Previous and next piece">
+<a class="prev" href="#journal-4"><span>Previous</span>Journal Entry 4</a>
+</nav></section>
+<script>
+(function () {
+  var views = Array.prototype.slice.call(document.querySelectorAll(".view"));
+  var hub = document.getElementById("view-hub");
+
+  function route() {
+    var id = (location.hash || "").replace(/^#/, "");
+    var target = (id && document.getElementById("view-" + id)) || hub;
+    views.forEach(function (v) { v.hidden = v !== target; });
+    window.scrollTo(0, 0);
+    var h = target.querySelector("h1");
+    if (h) { try { h.focus({ preventScroll: true }); } catch (e) {} }
+  }
+
+  window.addEventListener("hashchange", route);
+  route();
+})();
+
+</script>
+
+</body></html>
